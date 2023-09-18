@@ -1,0 +1,44 @@
+body {
+    text-align:left;
+    align:center;
+    background-color: gray;
+    font-family: "Arial"
+
+    }
+
+.container-fluid {
+    padding: 15% 25%;
+
+}
+
+table {
+    border: 1px solid #333;
+
+
+}
+
+tbody {
+    background-color: #00ff00;
+
+}
+td {
+    border: 1px solid #333;
+
+
+}
+
+th {
+    padding: 5px;
+}
+
+
+thead {
+
+    background-color: #333;
+    color: #fff;
+    }
+
+tfoot {
+    background-color: #ffd700;
+
+    }

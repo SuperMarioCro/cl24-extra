@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cl24-extra</title>
+    <link  href="{{url_for('static', filename='assets/css/styles.css')}}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container-fluid">
+
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">European Performance Spots</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for item in pel[0] %}
+      <td>{{item}}</td>
+      {% endfor %}
+
+    </tr>
+    <tr>
+      {% for item in pel[1] %}
+      <td>{{item}}</td>
+      {% endfor %}
+    </tr>
+  </tbody>
+
+</table>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Champions League Titleholder spot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{kc[0][0]}}</td>
+      <td>{{kc[0][1]}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+        <td>{{kc[1][0]}}</td>
+        <td>{{kc[1][1]}}</td>
+    </tr>
+
+
+    <tr>
+        <td>{{kc[2][0]}}</td>
+        <td>{{kc[2][1]}}</td>
+    </tr>
+
+  </tfoot>
+</table>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Europa League Titleholder spot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{kn[0][0]}}</td>
+      <td>{{kn[0][1]}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+        <td>{{kn[1][0]}}</td>
+        <td>{{kn[1][1]}}</td>
+    </tr>
+
+
+    <tr>
+        <td>{{kn[2][0]}}</td>
+        <td>{{kn[2][1]}}</td>
+    </tr>
+
+  </tfoot>
+</table>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">Current Direct Entries</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for item in de %}
+      <tr>
+      <td>{{item}}</td>
+      </tr>
+      {% endfor %}
+</table>
+
+
+<br><br>
+  <a href="mailto:mario.haric.02@gmail.com">Contact</a>
+<br>
+  <a href="election-24.onrender.com">Next US President</a>
+</div>
+</body>
+</html>
