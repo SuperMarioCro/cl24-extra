@@ -154,7 +154,7 @@ for item in leagues:
         for _ in range(item["direct"], item["spots"]):
             non_and_champions_list.append(teams[_].get_text())
     else:
-        for _ in range(item["direct"]):
+        for _ in range(1):
             non_and_champions_list.append(teams[_].get_text())
 
 kvalifikanti = []
@@ -178,11 +178,9 @@ for _ in range(3):
     lista_minimuma.append(float(kvalifikanti_champions[_][1]))
 minimum = min(lista_minimuma)
 challengers = []
-print(minimum)
 
 for item in lista_klubova:
     if float(item[1]) > minimum:
-        print(item[0], item[0] not in direct_entries_list, item not in kvalifikanti[:3], item not in kvalifikanti_champions[:3])
         if item[0] not in direct_entries_list and item not in kvalifikanti[:3] and item not in kvalifikanti_champions[:3]:
             if item[0] in list(all_teams.keys()):
                 item.append(all_teams[item[0]])
