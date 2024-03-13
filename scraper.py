@@ -178,12 +178,12 @@ for _ in range(3):
     lista_minimuma.append(float(kvalifikanti_champions[_][1]))
 minimum = min(lista_minimuma)
 challengers = []
+print(minimum)
 
 for item in lista_klubova:
     if float(item[1]) > minimum:
-        if item[0] not in direct_entries_list not in kvalifikanti not in kvalifikanti_champions:
+        print(item[0], item[0] not in direct_entries_list, item not in kvalifikanti[:3], item not in kvalifikanti_champions[:3])
+        if item[0] not in direct_entries_list and item not in kvalifikanti[:3] and item not in kvalifikanti_champions[:3]:
             if item[0] in list(all_teams.keys()):
                 item.append(all_teams[item[0]])
                 challengers.append(item)
-
-
