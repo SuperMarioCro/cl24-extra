@@ -138,16 +138,24 @@ for _ in range(len(lista_klubova)):
 
 champions_list = []
 non_and_champions_list = []
+all_teams = {}
 for item in leagues:
     response = requests.get(item["link"])
     direct_entries = response.text
     soup = BeautifulSoup(direct_entries, "html.parser")
     teams = soup.find_all(class_=CLASS)
     champions_list.append(teams[0].get_text())
+    if item["direct"] - item["spots"] != 0:
+        for _ in range(len(teams)):
+            all_teams[teams[_].get_text()] = _+1
     for _ in range(item["direct"]):
         direct_entries_list.append(teams[_].get_text())
-    for _ in range(item["direct"], item["spots"]):
-        non_and_champions_list.append(teams[_].get_text())
+    if item["name"] not in ["Serbia", "Turkey", "Switzerland", "Ukraine", "Czech Republic"]:
+        for _ in range(item["direct"], item["spots"]):
+            non_and_champions_list.append(teams[_].get_text())
+    else:
+        for _ in range(item["direct"]):
+            non_and_champions_list.append(teams[_].get_text())
 
 kvalifikanti = []
 kvalifikanti_champions = []
@@ -164,5 +172,18 @@ for item in lista_klubova:
 
 direct_entries_list.append(kvalifikanti[0][0])
 
+lista_minimuma = []
+for _ in range(3):
+    lista_minimuma.append(float(kvalifikanti[_][1]))
+    lista_minimuma.append(float(kvalifikanti_champions[_][1]))
+minimum = min(lista_minimuma)
+challengers = []
+
+for item in lista_klubova:
+    if float(item[1]) > minimum:
+        if item[0] not in direct_entries_list not in kvalifikanti not in kvalifikanti_champions:
+            if item[0] in list(all_teams.keys()):
+                item.append(all_teams[item[0]])
+                challengers.append(item)
 
 

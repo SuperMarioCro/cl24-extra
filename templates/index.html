@@ -95,6 +95,33 @@
 <table>
   <thead>
     <tr>
+      <th colspan="3">Not qualified by league position</th>
+    </tr>
+    <tr>
+      <th>Team</th>
+      <th>Coef</th>
+      <th>LP</th>
+    </tr>
+  </thead>
+  <tbody class="nq">
+    {% for team in ch %}
+    <tr>
+      {% for item in team %}
+      <td>{{item}}</td>
+      {% endfor %}
+
+    </tr>
+    {% endfor %}
+
+  </tbody>
+
+</table>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
       <th colspan="1">Current Direct Entries</th>
     </tr>
   </thead>
