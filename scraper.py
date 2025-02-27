@@ -16,21 +16,21 @@ leagues = [
     {"name": "Belgium", "link": "https://www.livescores.com/football/belgium/belgian-pro-league/?tz=2", "direct": 1,
      "spots": 2},
     {"name": "Scotland", "link": "https://www.livescores.com/football/scotland/scotland-premiership/?tz=2",
-     "direct": 1, "spots": 2},
-    {"name": "Austria", "link": "https://www.livescores.com/football/austria/bundesliga/?tz=2", "direct": 1,
+     "direct": 0, "spots": 2},
+    {"name": "Austria", "link": "https://www.livescores.com/football/austria/bundesliga/?tz=2", "direct": 0,
      "spots": 2},
     {"name": "Serbia", "link": "https://www.livescores.com/football/serbia/super-liga/?tz=2", "direct": 0,
-     "spots": 2},
-    {"name": "Turkey", "link": "https://www.livescores.com/football/turkey/super-lig/?tz=2", "direct": 0,
+     "spots": 1},
+    {"name": "Turkey", "link": "https://www.livescores.com/football/turkey/super-lig/?tz=2", "direct": 1,
      "spots": 2},
     {"name": "Switzerland", "link": "https://www.livescores.com/football/switzerland/super-league/?tz=2",
      "direct": 0, "spots": 2},
     {"name": "Ukraine", "link": "https://www.livescores.com/football/ukraine/premier-league/?tz=2", "direct": 0,
-     "spots": 2},
-    {"name": "Czech Republic", "link": "https://www.livescores.com/football/czech-republic/1st-league/?tz=2",
-     "direct": 0, "spots": 2},
-    {"name": "Norway", "link": "https://www.livescores.com/football/norway/eliteserien/?tz=2", "direct": 0,
      "spots": 1},
+    {"name": "Czech Republic", "link": "https://www.livescores.com/football/czech-republic/1st-league/?tz=2",
+     "direct": 1, "spots": 2},
+    {"name": "Norway", "link": "https://www.livescores.com/football/norway/eliteserien/?tz=2", "direct": 0,
+     "spots": 2},
     {"name": "Denmark", "link": "https://www.livescores.com/football/denmark/superliga/?tz=2", "direct": 0,
      "spots": 1},
     {"name": "Croatia", "link": "https://www.livescores.com/football/croatia/1st-league/?tz=2", "direct": 0,
@@ -38,7 +38,7 @@ leagues = [
     {"name": "Poland", "link": "https://www.livescores.com/football/poland/ekstraklasa/?tz=2", "direct": 0,
      "spots": 1},
     {"name": "Greece", "link": "https://www.livescores.com/football/greece/super-league/?tz=2", "direct": 0,
-     "spots": 1},
+     "spots": 2},
     {"name": "Hungary", "link": "https://www.livescores.com/football/hungary/nb-i/?tz=2", "direct": 0,
      "spots": 1},
     {"name": "Israel", "link": "https://www.livescores.com/football/israel/premier-league/?tz=2", "direct": 0,
@@ -54,7 +54,7 @@ soup = BeautifulSoup(livescore, "html.parser")
 class_finder = soup.find("td", string='Arsenal')
 CLASS = (class_finder['class'][0])
 
-response = requests.get("https://kassiesa.net/uefa/data/method5/ccoef2024.html")
+response = requests.get("https://kassiesa.net/uefa/data/method5/ccoef2025.html")
 kassiesa = response.text
 soup = BeautifulSoup(kassiesa, "html.parser")
 lista = soup.find_all("b")
@@ -75,7 +75,7 @@ for _ in range(1, 4, 2):
             # print (lista[_].get_text(), lista[_+1].get_text(), liga_lista[item["direct"]].get_text())
 
 
-response = requests.get("https://kassiesa.net/uefa/data/method5/trank2024.html")
+response = requests.get("https://kassiesa.net/uefa/data/method5/trank2025.html")
 clubs = response.text
 soup = BeautifulSoup(clubs, "html.parser")
 clubs_list = soup.find_all("td", class_="aleft")
@@ -150,7 +150,7 @@ for item in leagues:
             all_teams[teams[_].get_text()] = _+1
     for _ in range(item["direct"]):
         direct_entries_list.append(teams[_].get_text())
-    if item["name"] not in ["Serbia", "Turkey", "Switzerland", "Ukraine", "Czech Republic"]:
+    if item["name"] not in ["Austria", "Norway", "Switzerland", "Greece", "Scotland"]:
         for _ in range(item["direct"], item["spots"]):
             non_and_champions_list.append(teams[_].get_text())
     else:
